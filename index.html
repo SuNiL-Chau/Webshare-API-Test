@@ -10,7 +10,7 @@
 <body>
     
     <h1>I'm a Website</h1>
-    <button class="share">Don't u wanna share me?</button>
+    <button>Don't u wanna share me?</button>
     <p class="output"></p>
 
 
@@ -18,18 +18,19 @@
         let shareData = {
             title: 'I am a Website',
             text: 'Learning webshare API',
-            url: document.location.href
+            url: document.location.href,
         }
 
-        const btn = document.querySelector('.share');
+        const btn = document.querySelector('button');
         const output = document.querySelector('.output');
 
         btn.addEventListener('click', () => {
-           navigator.share(shareData).then(() => {
-               output.textContent = 'shared successful'
-           }).catch((e) => {
-               output.textContent = 'Error: ' + e
-           })
+           navigator.share(shareData)
+           .then(() =>
+           output.textContent = 'shared successful'
+           ).catch((e) =>
+           output.textContent = 'Error: ' + e
+           )
         });
     </script>
 </body>
