@@ -15,23 +15,21 @@
 
 
     <script>
-        let shareData = {
-            title: 'I am a Website',
-            text: 'Learning webshare API',
-            url: document.location.href,
-        }
+      let shareData = {
+        title: "I am a Website",
+        text: "Learning webshare API",
+        url: document.location.href,
+      };
 
-        const btn = document.querySelector('button');
-        const output = document.querySelector('.output');
+      const btn = document.querySelector("button");
+      const output = document.querySelector(".output");
 
-        btn.addEventListener('click', () => {
-           navigator.share(shareData)
-           .then(() =>
-           output.textContent = 'shared successful'
-           ).catch((e) =>
-           output.textContent = 'Error: ' + e
-           )
-        });
+      btn.addEventListener("click", () => {
+        navigator
+          .share(shareData)
+          .then(() => (output.textContent = "shared successful"))
+          .catch((e) => (output.textContent = "Error: " + e));
+      });
     </script>
 </body>
 </html>
