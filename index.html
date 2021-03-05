@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://webshareapitest" />
+    <title>Webshare API</title>
+</head>
+<body>
+    
+    <h1>I'm a Website</h1>
+    <button class="share">Don't u wanna share me?</button>
+    <p class="output"></p>
+
+
+    <script>
+        let url = document.location.href;
+        const canonicalurl = document.querySelector('link[rel=canonical]');
+
+        canonicalurl !== null ? url = canonicalurl.href : console.log('no canonical url');
+
+        let shareData = {
+            title: 'I am a Website',
+            text: 'Learning webshare API',
+            url: url
+        }
+
+        const btn = document.querySelector('.share');
+        const output = document.querySelector('.output');
+
+        btn.addEventListener('click', function () {
+           try {
+               await navigator.share(shareData)
+               output.textContent = 'shared successfully';
+           } catch (error) {
+               output.textContent = 'Error: ' + error;
+           } 
+        });
+    </script>
+</body>
+</html>
