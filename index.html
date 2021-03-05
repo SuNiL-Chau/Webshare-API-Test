@@ -15,27 +15,21 @@
 
 
     <script>
-        let url = document.location.href;
-        const canonicalurl = document.querySelector('link[rel=canonical]');
-
-        canonicalurl !== null ? url = canonicalurl.href : console.log('no canonical url');
-
         let shareData = {
             title: 'I am a Website',
             text: 'Learning webshare API',
-            url: url
+            url: document.location.href
         }
 
         const btn = document.querySelector('.share');
         const output = document.querySelector('.output');
 
-        btn.addEventListener('click', function () {
-           try {
-               await navigator.share(shareData)
-               output.textContent = 'shared successfully';
-           } catch (error) {
-               output.textContent = 'Error: ' + error;
-           } 
+        btn.addEventListener('click', () => {
+           navigator.share(shareData).then(() => {
+               output.textContent = 'shared successful'
+           }).catch((e) => {
+               output.textContent = 'Error: ' + e
+           })
         });
     </script>
 </body>
